@@ -72,3 +72,10 @@ main .description p {
     margin-bottom: 4px;
 }
 
+.section-title {
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    font-family: sans-serif;
+}
+
