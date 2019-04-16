@@ -1,30 +1,47 @@
+/**
+Todo: fusion des polices
+ */
+
 @import url('https://fonts.googleapis.com/css?family=Merienda');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    padding: 30px 0 0;
     margin: 0;
     width: 100vw;
     overflow-x: hidden;
     min-height: 100vh;
 
+    font-family: 'Open Sans', sans-serif;;
+}
+
+#background {
     background: url('background.jpg');
     background-size: cover;
     background-position-y: 20%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: -2;
 }
 
 header, main {
     width: 75%;
-    margin: auto;
+    margin: -100vh auto auto;
 }
 
 header {
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     padding: 5px;
+    margin-top: calc(30px - 100vh);
 }
 
 nav {
@@ -72,10 +89,74 @@ main .description p {
     margin-bottom: 4px;
 }
 
-.section-title {
-    color: white;
-    text-align: center;
-    font-size: 2em;
-    font-family: sans-serif;
+main .container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
+main .container .container-col {
+    width: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+main .container-col section {
+    width: 100%;
+}
+
+section .title-group {
+    border-bottom: 1px solid white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 53px;
+}
+
+section .title-group span {
+    font-size: 2em;
+    color: white;
+    display: inline-block;
+    text-align: center;
+    width: 90%;
+    text-shadow: 1px 2px 3px rgba(0,0,0, 0.5);
+    font-family: 'Raleway', sans-serif;
+}
+
+html {
+    --skill-dot-size: 15px;
+}
+
+.skill-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    color: white;
+    margin: 5px auto 15px;
+}
+
+.skill-name {
+    padding-bottom: 10px;
+}
+
+.skill-dot-container {
+    display: flex;
+    height: var(--skill-dot-size);
+}
+
+.skill-dot {
+    width: var(--skill-dot-size);
+    border: 2px solid white;
+    border-radius: var(--skill-dot-size);
+    background: transparent;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.skill-dot-completed {
+    background: white;
+}
