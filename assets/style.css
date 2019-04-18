@@ -1,12 +1,7 @@
-/**
-Todo: fusion des polices
- */
-
-@import url('https://fonts.googleapis.com/css?family=Merienda');
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Open+Sans|Raleway');
 
 * {
+    font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
 
@@ -15,26 +10,38 @@ body {
     width: 100vw;
     overflow-x: hidden;
     min-height: 100vh;
+}
 
-    font-family: 'Open Sans', sans-serif;;
+body.modal-opened {
+    overflow: hidden;
 }
 
 #background {
     background: url('background.jpg');
-    background-size: cover;
-    background-position-y: 20%;
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     height: 100%;
+    transform: scale(1.1);
     z-index: -2;
 }
 
 header, main {
     width: 75%;
     margin: -100vh auto auto;
+    opacity: 1;
+    transition: all .8s;
+}
+
+header.cloud, main.cloud {
+    opacity: .3;
+    filter: blur(5px);
+}
+
+.blur {
+    filter: blur(5px);
 }
 
 header {
@@ -64,17 +71,18 @@ main {
 
 main .title {
     color: #7b8dad;
+    font-size: 5em;
+    font-family: 'Lobster Two', cursive;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    letter-spacing: 7px;
+    transition: letter-spacing .5s, font-size .5s;
+}
+
+main .title.minimized {
     font-size: 3.5em;
-    font-family: 'Merienda', cursive;
-    text-transform: uppercase;
-}
-
-main .title-last-name {
-    padding-left: 1em;
-}
-
-main .title-first-name {
-    padding-left: 6em;
+    letter-spacing: 5px;
 }
 
 main .description {
@@ -82,6 +90,7 @@ main .description {
     color: white;
     font-family: Georgia, sans-serif;
     font-size: .75em;
+    margin-bottom: 50px;
 }
 
 main .description p {
@@ -91,20 +100,24 @@ main .description p {
 
 main .container {
     width: 90%;
-    margin: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
 }
 
 main .container .container-col {
-    width: 30%;
+    width: 40%;
     margin-left: 5%;
     margin-right: 5%;
 }
 
 main .container-col section {
     width: 100%;
+}
+
+section {
+    transition: .8s opacity, .8s transform;
+    transform: scale(1.1);
 }
 
 section .title-group {
@@ -123,6 +136,11 @@ section .title-group span {
     width: 90%;
     text-shadow: 1px 2px 3px rgba(0,0,0, 0.5);
     font-family: 'Raleway', sans-serif;
+}
+
+section .title-group img {
+    height: 36px;
+    width: 36px;
 }
 
 html {
@@ -159,4 +177,226 @@ html {
 
 .skill-dot-completed {
     background: white;
+}
+
+.lang-container {
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+.lang-container img {
+    width: 25%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.hobbies-container {
+    display: flex;
+    width: 100%;
+}
+
+.hobbies-container div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: rgba(255, 255, 255, .4);
+    text-align: center;
+}
+
+html {
+    --size-grad-dot: 10px;
+    --size-grad-vertical: 4px;
+}
+
+.grad-group {
+    position: relative;
+    width: 100%;
+}
+
+.grad-vertical {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    bottom: 0;
+    background: black;
+    width: var(--size-grad-vertical);
+    border-radius: var(--size-grad-vertical);
+}
+
+
+.grad-container {
+    display: flex;
+    color: white;
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.grad-title {
+    width: 20%;
+}
+
+.grad-desc {
+    width: 40%;
+    margin-left: 10%;
+}
+
+.grad-desc-desc {
+    font-size: .75em;
+    color: gray;
+}
+
+.grad-date::before{
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 0.866em solid transparent;
+    border-right: 1em solid black;
+    border-bottom: 0.866em solid transparent;
+    right: 100%;
+    top: 0;
+    position: absolute;
+}
+.grad-date {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    padding: 2px 10px;
+    font-size: .75em;
+}
+
+.grad-dot {
+    width: var(--size-grad-dot);
+    height: var(--size-grad-dot);
+    border-radius: var(--size-grad-dot);
+    border: 1px solid white;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: calc(25% - (var(--size-grad-dot) / 2) + (var(--size-grad-vertical) / 2));
+    z-index: 10;
+    display: inline-block;
+}
+
+.cloud {
+    opacity: .1;
+    transform: scale(.9);
+}
+
+.padding-up {
+    padding-top: 50px;
+}
+
+.modal {
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform .5s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    color: white;
+    overflow: auto;
+}
+
+.modal.modal-opened {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal img {
+    float: right;
+    width: 1em;
+    margin-top: 1em;
+    margin-right: .25em;
+    margin-left: 1em;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.modal img:hover {
+    transform: scale(1.05);
+}
+
+.modal-header {
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2em;
+}
+
+#contact {
+    width: 50%;
+}
+
+#contact form {
+    padding: 10px;
+}
+
+#contact-info {
+    font-size: .75em;
+}
+
+.form-row {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-row-two-column {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row-two-column .form-column {
+    width: 40%;
+}
+
+.form-row label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-row input, .form-row textarea, .form-row button {
+    width: 100%;
+    padding: 10px;
+}
+
+#contact-viewer {
+    width: 90%;
+}
+
+.contact-viewer-desc {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.contact-viewer-desc-date {
+    float: right;
+}
+
+#contact-viewer textarea {
+    width: 100%;
+}
+
+.contact-viewer-element {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.contact-viewer-element:not(:last-child) {
+    border-bottom: 1px solid white;
+}
+
+.contact-viewer-desc-email {
+    font-size: .75em;
 }
